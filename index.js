@@ -1,6 +1,3 @@
-import UTILS from "../Utils";
-
-
 const PixelsSelector = {}
 
 /**
