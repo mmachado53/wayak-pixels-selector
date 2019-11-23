@@ -37,7 +37,7 @@ Returns an image fill from a starting point as the "magic wand" tool in photosho
 
 Returns **ImageData** a ImageData Object with the same sizes of canvasImageSource
 
-
+![step2](readmefiles/MagicWand1.jpg)
 
 [1]: #pixelsselector
 
