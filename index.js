@@ -7,10 +7,15 @@ import RGBUtils from "wayak-rgb-utils";
 
 /**
  * Returns the values of a pixel of an image or canvas
+ * @function getPixelInfo
+ * @static
  * @param {number} x - x position.
  * @param {number} y - y position.
- * @param {(Image/Canvas)} canvasImageSource - source image.
+ * @param {(Image|Canvas)} canvasImageSource - source image.
  * @returns {object} a object with props r,g,b,a,uint32
+ * @example
+ * // returns {r:255,g:0,b:0,a:255,uint32:0xff0000ff}
+ * PixelsSelector.getPixelInfo(4,4,canvas);
  */
 const getPixelInfo = (x, y, canvasImageSource)=>{
     if(canvasImageSource instanceof Image){
@@ -29,10 +34,19 @@ const getPixelInfo = (x, y, canvasImageSource)=>{
  * Returns an image fill from a starting point as the "magic wand" tool in photoshop
  * @param {number} pX - x position.
  * @param {number} pY - y position.
- * @param {(Image/Canvas)} canvasImageSource - source image.
+ * @param {(Image|Canvas)} canvasImageSource - source image.
  * @param {number} tolerance - number (0-200).
- * @param {(string/number)} [tintColor] - can be '#ff0000'(string) or 0xff0000(number) or 'ff0000'(string), if is null return pixel with original rgb values.
+ * @param {(string|number)} [tintColor] - can be '#ff0000'(string) or 0xff0000(number) or 'ff0000'(string), if is null return pixel with original rgb values.
  * @returns {ImageData} a ImageData Object with the same sizes of canvasImageSource
+ * @example
+ * // returns ImageData {data: Uint8ClampedArray(1000000),width:500,height:500}
+ * PixelsSelector.floodFill(5,5,canvas,100);
+ * @example
+ * // returns ImageData {data: Uint8ClampedArray(1000000),width:500,height:500}
+ * PixelsSelector.floodFill(67,68,canvas,100,0xff0000);
+ * @example
+ * // returns ImageData {data: Uint8ClampedArray(1000000),width:500,height:500}
+ * PixelsSelector.floodFill(67,68,canvas,100,'#ff0000');
  */
 const floodFill = (pX, pY, canvasImageSource, tolerance, tintColor)=>{
     if(canvasImageSource instanceof Image){
@@ -109,6 +123,7 @@ const floodFill = (pX, pY, canvasImageSource, tolerance, tintColor)=>{
 }
 
 /**
+ * @ignore
  * Calculate the alpha value by mixing two colors based on a tolerance
  * @param {object} rgb1 - color object like {r:255,g:0,b:0}.
  * @param {number} rgb1.r - red value (0-255).
